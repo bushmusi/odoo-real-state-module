@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<odoo>
+    <record id="estate_property_action" model="ir.ui.view">
+        <field name="name">Estate Property Action</field>
+        <field name="model">estate.property</field>
+        <field name="arch" type="xml">
+            <tree string="Channel" editable="bottom">
+                <field name="name"/>
+                <field name="postcode" />
+                <field name="description" />
+            </tree>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<odoo>
+    <menuitem id="test_menu_root" name="Test" />
+        <menuitem id="test_first_level_menu" name="First Level" parent="test_menu_root" />
+            <menuitem id="test_model_menu_action" action="test_model_action" parent="test_first_level_menu"/>
+    <menuitem id="hospital_menu_root" name="hospital" sequence="0" />
+    <menuitem id="patient_menu_root" name="patient" parent="hospital_menu_root" sequence="0" />
+    <menuitem id="nurse_menu_root" name="nurse" parent="patient_menu_root" sequence="0" />
+</odoo>
