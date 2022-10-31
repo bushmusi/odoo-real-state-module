@@ -1,3 +1,4 @@
+from dataclasses import field
 from typing_extensions import Required
 from pkg_resources import require
 from traitlets import default
@@ -9,3 +10,5 @@ class TestModel(models.Model):
 
     tester_name = fields.Text(default="Unknown")
     last_seen = fields.Date("Last Seen", default=lambda self: fields.Datetime.now())
+    rank = fields.Integer()
+    location = fields.Text()

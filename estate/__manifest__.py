@@ -1,12 +1,17 @@
 {
     'name': 'Real Estate Company',
+    'application' : True,
     'depends': ['base'],
     'data': [
         'security/ir.model.access.csv',
-        'views/test_view.xml',
-        'views/test_menu.xml',
         'views/estate_property_views.xml',
-        'views/estate_menu.xml',
+        'views/estate_property_type_views.xml',
+        'views/real_property_tag_views.xml',
+        'views/estate_property_offer_views.xml',
+        'views/estate_menus.xml',
+        'views/test_view.xml',
+        'views/bush_property_views.xml',
+        'views/patient.xml',
     ],
     'sequence': 0,
 }

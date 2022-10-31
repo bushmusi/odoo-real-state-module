@@ -1,14 +1,103 @@
 <?xml version="1.0"?>
 <odoo>
-    <record id="estate_property_action" model="ir.ui.view">
-        <field name="name">Estate Property Action</field>
+    <record id="estate_property_action" model="ir.actions.act_window">
+        <field name="name">Properties</field>
+        <field name="res_model">estate.property</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <record id="estate_property_view_tree" model="ir.ui.view">
+        <field name="name">estate.property.tree</field>
         <field name="model">estate.property</field>
         <field name="arch" type="xml">
-            <tree string="Channel" editable="bottom">
+            <tree string="Property">
+                <field name="property_type_id"/>
+                <field name="tag_ids"/>
                 <field name="name"/>
-                <field name="postcode" />
-                <field name="description" />
+                <field name="postcode"/>
+                <field name="bedrooms"/>
+                <field name="living_area"/>
+                <field name="expected_price"/>
+                <field name="selling_price"/>
+                <field name="date_availabilty"/>
             </tree>
+        </field>
+    </record>
+    
+    <record id="estate_property_form_view" model="ir.ui.view">
+        <field name="name">estate.property.form</field>
+        <field name="model">estate.property</field>
+        <field name="arch" type="xml">
+            <form string="Estate">
+                <sheet>
+                    <group>
+                        <h2>My New House</h2>
+                    </group>
+                    <group>
+                        <field name="tag_ids"  widget="many2many_tags"  width="0.5" optional="hide"/> 
+                    </group>
+                    <group>
+                        <group> 
+                            <group>
+                                <field name="property_type_id"/>
+                                <field name="name"/>
+                                <field name="postcode"/>
+                                <field name="date_availabilty"/>
+                            </group>
+                        </group>
+                        <group>  
+                            <group>
+                                <field name="expected_price"/>
+                                <field name="selling_price"/>
+                                <field name="best_price"/>
+                            </group>
+                        </group>
+
+                        <notebook>
+                            <page string="Description">
+                                <group>
+                                    <field name="description"/>
+                                    <field name="bedrooms"/>
+                                    <field name="living_area" string="Living Area(sqm)"/>
+                                    <field name="facades"/>
+                                    <field name="garage"/>
+                                    <field name="state"/>
+                                    <field name="garden"/>
+                                    <field name="garden_area"/>
+                                    <field name="garden_orientation"/>
+                                    <field name="total_area" string="Total area(sqm)"/>
+                                </group>
+                            </page>
+                            <page string="Offers">
+                                <field name="offer_ids"/>
+                            </page>
+                            <page string="Other Info">
+                                <group>
+                                    <field name="buyer_id"/>
+                                    <field name="sales_person_id"/>
+                                </group>
+                            </page>
+                        </notebook>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="view_estate_property_search" model="ir.ui.view">
+        <field name="name">estate.property.search</field>
+        <field name="model">estate.property</field>
+        <field name="arch" type="xml">
+            <search string="Estate Analysis">
+                <field name="name" string="Title"/>
+                <field name="postcode"/>
+                <field name="expected_price"/>
+                <field name="bedrooms"/>
+                <field name="property_type_id"/>
+                <separator/>
+                <filter name="state" string="State new or offer received"  domain="['|', ('state', '=', 'New'), ('state', '=', 'Offer Received')]"/>
+                <group expand="1" string="Group By">
+                    <filter string="Postcode" name="postcode" context="{'group_by':'postcode'}"/>
+                </group>
+            </search>
         </field>
     </record>
 </odoo>

@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<odoo>
+    <record id="bush_property_action" model="ir.actions.act_window">
+        <field name="name">Property</field>
+        <field name="res_model">bush.property</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record id="bush_property_view_tree" model="ir.ui.view">
+        <field name="name">bush.property.tree</field>
+        <field name="model">bush.property</field>
+        <field name="arch" type="xml">
+            <tree string="Property">
+                <field name="name"/>
+                <field name="postcode"/>
+                <field name="bedrooms"/>
+                <field name="living_area"/>
+                <field name="expected_price"/>
+                <field name="selling_price"/>
+                <field name="date_availabilty"/>
+            </tree>
+        </field>
+    </record>
+    <record id="bush_property_view_form" model="ir.ui.view">
+        <field name="name">bush.property.form</field>
+        <field name="model">bush.property</field>
+        <field name="arch" type="xml">
+            <form string="Property Form">
+                <sheet>
+                    <h1>My New House</h1>
+                    <div>
+                        <span>Postcode</span>
+                    </div>
+                    <div class="oe_title">
+                        <div class="oe_edit_only">
+                            <label for="name"/>
+                        </div>
+                        <h1 class="mb32">
+                            <field name="name" class="mb16"/>
+                        </h1>
+                        <field name="active" invisible="1"/>
+                    </div>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <menuitem id="bush_menu_root" name="Bush Properties" />s
+        <menuitem id="bush_ad_menu" name="Bush Ads" parent="bush_menu_root" />
+            <menuitem id="bush_menu_action" action="bush_property_action" parent="bush_ad_menu"/>
+</odoo>
