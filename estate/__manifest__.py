@@ -12,6 +12,7 @@
         'views/test_view.xml',
         'views/bush_property_views.xml',
         'views/patient.xml',
+        'views/res_users_view.xml',
     ],
     'sequence': 0,
 }
