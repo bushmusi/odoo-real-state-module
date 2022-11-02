@@ -74,8 +74,8 @@ class EstateProperty(models.Model):
         for record in self:
             if record.state == "Canceled":
                 raise UserError(_("You can't set Caceled property as sold"))
-            else:
-                record.state = "Sold"
+            # else:
+            #     record.state = "Sold"
         return True
     def cancel_property(self):
         for record in self:
@@ -97,7 +97,6 @@ class EstateProperty(models.Model):
 
     def unlink(self):
         for record in self:
-            _logger.error("my variable : %r", record.state)
             if record.state not in ['New', 'Canceled']:
                 raise ValidationError(_('Only New and Canceled property can be deleted'))
             record.offer_ids.unlink()
