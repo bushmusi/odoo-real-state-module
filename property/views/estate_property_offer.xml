@@ -3,16 +3,30 @@
         <field name="name">Estate Property offer</field>
         <field name="res_model">estate.property.offer</field>
         <field name="view_mode">tree,form</field>
+        <field name="domain">[('property_type_id', '=', active_id)]</field>
     </record>
     
     <record id="estate_property_offer_view_tree" model="ir.ui.view">
         <field name="name">estate.property.offer.tree</field>
         <field name="model">estate.property.offer</field>
         <field name="arch" type="xml">
-            <tree string="Channel">
+            <tree  editable="bottom" decoration-danger="status=='Refused'" decoration-success="status=='Accepted'">
                 <field name="price"/>
                 <field name="partner_id"/>
-                <field name="status"/>
+                <field name="date_deadline"/>
+                <field name="validity"/>
+                <button 
+                    name="offer_accept" 
+                    type="object" 
+                    icon="fa-check" 
+                    attrs="{'invisible': [('status', 'not in',[None, False])] }"
+                />
+                <button 
+                    name="offer_refuse" 
+                    type="object" icon="fa-remove" 
+                    attrs="{'invisible': [('status', 'not in',[None, False])] }"
+                />
+                <field name="status" invisible="True"/>
             </tree>
         </field>
     </record>
@@ -25,6 +39,8 @@
                     <group>
                         <field name="price"/>
                         <field name="partner_id"/>
+                        <field name="date_deadline"/>
+                        <field name="validity"/>
                         <field name="status" />
                     </group>
                 </sheet>
