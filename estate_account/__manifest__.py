@@ -4,5 +4,5 @@
     'depends': ['estate','account'],
     'data': [
     ],
-    'sequence': 1,
+    'sequence': 3,
 }
