@@ -53,15 +53,13 @@ class EstateProperty(models.Model):
     total_area = fields.Float(compute = "_compute_total_area")
     best_price = fields.Float(compute = "_compute_best_price")
     sequence = fields.Integer('Sequence', default=1, help="Used to order stages. Lower is better.")
-
-    _sql_constraints = [
-        ('check_expected_price', 'CHECK(expected_price >= 0)',
-         'Expected price should be more than 1.')
-    ]
     
     _sql_constraints = [
         ('check_selling_price', 'CHECK(selling_price >= 0)',
-         'Selling price should be more than 1.')
+         'Selling price should be more than 1.'),
+         
+        ('check_expected_price', 'CHECK(expected_price >= 0)',
+         'Expected price should be more than 1.')
     ]
 
 
