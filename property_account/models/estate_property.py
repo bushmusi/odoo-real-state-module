@@ -6,9 +6,11 @@ class EstateProperty(models.Model):
     _inherit = "estate.property"
 
     def sell_property(self):
-        journal = self.env['account.journal'].search([("type", "=", "sale")])
+        # _logger.info(" reached ".center(100, '='))
+        # self.env['estate.property'].check_access_rights('update')
+        journal = self.sudo().env['account.journal'].search([("type", "=", "sale")])
         price_unit = 0.06 * self.selling_price
-        obj = self.env['account.move'].create({
+        obj = self.sudo().env['account.move'].create({
                 'type': 'out_invoice',
                 'partner_id': self.salesperson_id,
                 'journal_id': journal.id,
@@ -28,5 +30,4 @@ class EstateProperty(models.Model):
                     }),
                 ]
         })
-        _logger.info('new obj %s', obj)
         return super().sell_property()
