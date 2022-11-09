@@ -4,7 +4,7 @@
 {
     'name': 'Real Estate',
     'version': '1.2',
-    'category': 'Estate/property',
+    'category': 'Real Estate/Brokerage',
     'sequence': 0,
     'summary': 'Create property and manage them',
     'description': "",
@@ -14,6 +14,7 @@
     ],
     'data': [
         'security/ir.model.access.csv',
+        'security/security.xml',
         'views/estate_property_views.xml',
         'views/estate_property_offer.xml',
         'views/estate_property_type.xml',
