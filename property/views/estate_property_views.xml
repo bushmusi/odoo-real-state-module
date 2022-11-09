@@ -57,6 +57,7 @@
                             <field name="property_type_id" options="{'no_create_edit': True, 'no_create': True}"/>
                             <field name="postcode"/>
                             <field name="date_availability" string="Available from"/>
+                            <field name="company_id" groups="base.group_multi_company"/>
                         </group>
                         <group>
                             <field name="expected_price"/>
@@ -86,7 +87,7 @@
                             
                             <page string="Offers">
                                 <field name="offer_ids"
-                                    attrs="{'readonly': [('state','in',['Offer Received','Sold','Canceled'])]}"/>
+                                    attrs="{'readonly': [('state','in',['Offer accepted','Sold','Canceled'])]}"/>
                             </page>
                         </notebook>
                     </group>

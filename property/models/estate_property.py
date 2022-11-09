@@ -47,12 +47,13 @@ class EstateProperty(models.Model):
     )
     property_type_id = fields.Many2one('estate.property.type', string="Type")
     buyer_id = fields.Many2one("res.partner", string="Buyer")
-    salesperson_id = fields.Many2one('res.users', string='Salesperson', index=True, tracking=True, default=lambda self: self.env.user)
+    salesperson_id = fields.Many2one('res.users', string='Salesperson', index=True, tracking=True)
     tag_ids = fields.Many2many("estate.property.tag", string="tages")
     offer_ids = fields.One2many("estate.property.offer", "property_id", string="Offers")
     total_area = fields.Float(compute = "_compute_total_area")
     best_price = fields.Float(compute = "_compute_best_price")
     sequence = fields.Integer('Sequence', default=1, help="Used to order stages. Lower is better.")
+    company_id = fields.Many2one('res.company', 'Company', default=lambda self: self.env.company, required=True)
     
     _sql_constraints = [
         ('check_selling_price', 'CHECK(selling_price >= 0)',
@@ -89,17 +90,16 @@ class EstateProperty(models.Model):
             #     'title': _("Warning"),
             #     'message': ('This option is not supported for Authorize.net')}}
     def sell_property(self):
-        _logger.info('current property from parent: %s', self.name)
         for record in self:
             if record.state == 'Canceled':
                 raise UserError(_('Cancelled property can\'t be sold'))
-            # record.state = 'Sold'
+            record.state = 'Sold'
             return True
     def cancel_property(self):
         for record in self:
             if record.state == 'Sold':
                 raise UserError(_('Sold property can\'t be cancelled'))
-            record.state = 'Sold'
+            record.state = 'Canceled'
             return True
     @api.constrains('selling_price')
     def _check_selling_price(self):
@@ -110,7 +110,6 @@ class EstateProperty(models.Model):
     
     def unlink(self):
         for line in self:
-            _logger.info('Current module is%s',(line.state not in ['New', 'Canceled']))
             if line.state not in ['New', 'Canceled']:
                 raise ValidationError(_('Only new or canceled property can be deleted'))
             self.offer_ids.unlink()
