@@ -3,7 +3,7 @@
         <menuitem id="advertisment_menu" name="Advertisments" parent="estate_property_root"/>
             <menuitem id="properties_action" action="estate_property_action" parent="advertisment_menu"/>
         
-        <menuitem id="estate_property_type_menu" name="Settings" parent="estate_property_root"/>
+        <menuitem id="estate_property_type_menu" name="Settings" parent="estate_property_root" groups="estate_group_manager"/>
             <menuitem id="property_type_action" action="estate_property_type_action" parent="estate_property_type_menu"/>
             <menuitem id="property_tag_action" action="estate_property_tag_action" parent="estate_property_type_menu"/>
 </odoo>
