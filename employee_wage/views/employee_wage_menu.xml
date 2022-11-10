@@ -1,0 +1,3 @@
+<odoo>
+  <menuitem id="wage_manage_action" name="Employee Wage Setting" action="employee_wage_action" parent="hr.menu_human_resources_configuration"/>
+</odoo>
