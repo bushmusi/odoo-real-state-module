@@ -14,5 +14,5 @@
         'views/patient.xml',
         'views/res_users_view.xml',
     ],
-    'sequence': 2,
+    'sequence': 3,
 }
