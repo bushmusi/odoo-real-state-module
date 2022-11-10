@@ -1,0 +1,41 @@
+<odoo>
+    <record id="employee_wage_action" model="ir.actions.act_window">
+        <field name="name">Employee Wage Action</field>
+        <field name="res_model">employee.wage</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <record id="employee_wage_view_tree" model="ir.ui.view">
+        <field name="name">employee.wage.tree</field>
+        <field name="model">employee.wage</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="job_id"/>
+                <field name="min_wage"/>
+                <field name="max_wage"/>
+                <field name="company_id" 
+                    domain="['|', ('company_id', '=', False), ('company_id', '=', company_id)]"
+                    invisible="1"
+                />
+            </tree>
+        </field>
+    </record>
+    <record id="employee_wage_view_form" model="ir.ui.view">
+        <field name="name">employee.wage.form</field>
+        <field name="model">employee.wage</field>
+        <field name="arch" type="xml">
+            <form string="Estate Property">
+                <sheet>
+                    <group>
+                        <field name="job_id"/>
+                        <field name="min_wage"/>
+                        <field name="max_wage"/>
+                        <field name="company_id" 
+                            domain="['|', ('company_id', '=', False), ('company_id', '=', company_id)]"
+                            invisible="1"
+                        />
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>
