@@ -1,5 +1,5 @@
 <odoo>
-    <record id="employee_wage_action" model="ir.actions.act_window">
+    <!-- <record id="employee_wage_action" model="ir.actions.act_window">
         <field name="name">Employee Wage Action</field>
         <field name="res_model">employee.wage</field>
         <field name="view_mode">tree,form</field>
@@ -36,6 +36,21 @@
                     </group>
                 </sheet>
             </form>
+        </field>
+    </record> -->
+    <record id="inherited_hr_job_view_form" model="ir.ui.view">
+        <field name="name">inherited.hr.job.view.form</field>
+        <field name="model">hr.job</field>
+        <field name="inherit_id" ref="hr.view_hr_job_form"/>
+        <field name="arch" type="xml">
+              <group>
+                <group>
+                    <field name="min_wage"/>
+                </group>
+                <group>
+                    <field name="max_wage"/>
+                </group>
+              </group>
         </field>
     </record>
 </odoo>
