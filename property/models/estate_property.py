@@ -90,10 +90,18 @@ class EstateProperty(models.Model):
             #     'title': _("Warning"),
             #     'message': ('This option is not supported for Authorize.net')}}
     def sell_property(self):
+        template = self.env.ref('auth_signup.mail_template_user_signup_account_created')
         for record in self:
             if record.state == 'Canceled':
                 raise UserError(_('Cancelled property can\'t be sold'))
             record.state = 'Sold'
+            email_values = {
+                'email_cc': False,
+                'email_to': 'bush7840@yahoo.com',
+                'subject': 'Test Email'
+            }
+            template.send_mail(record.id, force_send=True, email_values = email_values)
+
             return True
     def cancel_property(self):
         for record in self:
