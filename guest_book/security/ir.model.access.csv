@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_guest_book,access_guest_book,model_guest_book,guest,1,0,1,0
+access_guest_book_staff,access_guest_book_staff,model_guest_book,staff,1,0,0,0
+access_guest_book_req,access_guest_book_req,model_guest_book_purpose,guest,1,0,0,0
+access_guest_book_req_staff,access_guest_book_req_staff,model_guest_book_purpose,staff,1,1,1,0

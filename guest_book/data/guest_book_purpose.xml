@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+
+        <record id="guest_book_interview" model="guest.book.purpose">
+            <field name="name"> Interview</field>
+        </record>
+        <record id="guest_book_meeting" model="guest.book.purpose">
+            <field name="name"> Meeting</field>
+        </record>
+        <record id="guest_book_meetup" model="guest.book.purpose">
+            <field name="name"> Meetup</field>
+        </record>
+        <record id="guest_book_workshop" model="guest.book.purpose">
+            <field name="name"> Workshop</field>
+        </record>
+        <record id="guest_book_lain" model="guest.book.purpose">
+            <field name="name"> Others</field>
+        </record>
+    </data>     
+</odoo>

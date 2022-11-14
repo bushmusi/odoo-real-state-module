@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="new_guest" model="mail.template">
+            <field name="name">New Guest</field>
+            <field name="model_id" ref="model_guest_book"></field>
+            <field name="email_from"><![CDATA[${object.company_id.name} <${object.company_id.email}>]]></field>
+            <field name="email_to">${object.meet.work_email|safe}</field>
+            <field name="subject">No-Reply: New Guest Has Arrived</field>
+            <field name="auto_delete" eval="False"/>
+<!--            <field name="built_in" eval="True"/>-->
+            <field name="body_html"><![CDATA[
+                <div style="background:#F3F5F6;color:#515166;padding:25px 0px;font-family:Arial,Helvetica,sans-serif;font-size:14px;">
+                    <table style="width:600px;margin:5px auto;">
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <a href="/">
+                                        <img src="/logo" alt="${object.company_id.name}" style="vertical-align:baseline;max-width:100px;" />
+                                    </a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table style="width:600px;margin:0px auto;background:white;border:1px solid #e1e1e1;">
+                        <tbody>
+                            <tr>
+                                <td style="padding:15px 20px 0px 20px; font-size:16px; font-weight:300;">
+                                    <p style="font-size:16px;">
+                                        Hi <b>${object.meet.name}</b>,
+                                    </p><p style="font-size:16px;">
+                                        Your guest has arrived:
+                                    </p>
+                                    <table style="width:100%;border-top:1px solid #e1e1e1;">
+                                        <tr>
+                                            <td style="padding:25px 10px 25px 10px;width:50%;line-height:20px;vertical-align:top;">
+                                                <div><strong>Name</strong>: ${object.name}</div>
+                                                <div><strong>Gender</strong>:
+                                                    % if object.gender == 'm'
+                                                        Male
+                                                    % else
+                                                        Female
+                                                    % endif
+                                                </div>
+                                            </td>
+                                            <td style="padding:25px 10px 25px 10px;width:50%;line-height:20px;vertical-align:top;">
+                                                <div><strong>Institution</strong>: ${object.institution}</div>
+                                                <div><strong>Purpose</strong>: ${object.purpose_id.name}</div>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table style="width:600px;margin:0px auto;text-align:center;">
+                        <tbody>
+                            <tr>
+                                <td style="padding-top:10px;font-size: 12px;">
+                                    <div>Sent by ${object.company_id.name}</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            ]]>
+            </field>
+        </record>
+
+    </data>
+</odoo>

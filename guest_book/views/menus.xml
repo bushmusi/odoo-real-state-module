@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+
+        <menuitem id="guest_book_parent_menu" name="Guest Book" web_icon="rp_guest_book,static/description/icon.png" sequence="40"/>
+
+        <menuitem id="guest_book_menu" name="Guests" parent="guest_book_parent_menu" action="guest_book_action" sequence="10"/>
+        
+        <menuitem id="guest_book_config_menu" name="Configuration" parent="guest_book_parent_menu" sequence="20"/>
+
+        <menuitem id="guest_book_purpose_menu" name="Purpose" parent="guest_book_config_menu" action="guest_book_purpose_action" sequence="30"/>
+
+    </data>
+</openerp>
