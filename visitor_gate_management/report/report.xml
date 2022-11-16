@@ -7,16 +7,16 @@
             id="action_print_visit_card"
             model="fo.visit"
             report_type="qweb-pdf"
-            name="front_office_management.report_visitor_label"
-            file="front_office_management.report_visitor_label"
+            name="visitor_gate_management.report_visitor_label"
+            file="visitor_gate_management.report_visitor_label"
         />
         <report
             string="Visitors Report"
             id="action_print_visit_report"
             model="fo.visit"
             report_type="qweb-pdf"
-            name="front_office_management.report_visitor_report"
-            file="front_office_management.report_visitor_report"
+            name="visitor_gate_management.report_visitor_report"
+            file="visitor_gate_management.report_visitor_report"
         />
 
         <report
@@ -24,8 +24,8 @@
             id="action_print_property_label"
             model="fo.property.counter"
             report_type="qweb-pdf"
-            name="front_office_management.report_property_label"
-            file="front_office_management.report_property_label"
+            name="visitor_gate_management.report_property_label"
+            file="visitor_gate_management.report_property_label"
         />
 
     </data>

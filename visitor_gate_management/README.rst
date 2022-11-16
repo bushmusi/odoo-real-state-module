@@ -1,8 +1,8 @@
 ===========================
-Front Office Management v11
+Visitor Gate Management v11
 ===========================
 
-Helps You To Manage Front Office Operations.
+Helps You To Manage Visitor Gate Operations.
 
 Installation
 ============

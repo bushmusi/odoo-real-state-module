@@ -82,7 +82,7 @@
             </field>
         </record>
 
-        <menuitem id="fo_property_counter_menu" name="Property Counter" parent="front_office_mgmnt_main"
+        <menuitem id="fo_property_counter_menu" name="Property Counter" parent="gate_visitor_mgmnt_main"
                   sequence="4"/>
         <menuitem id="fo_property_counter_menu_child" name="Property Counter" parent="fo_property_counter_menu" action="fo_property_counter_action"
                   groups="base.group_user" sequence="2"/>

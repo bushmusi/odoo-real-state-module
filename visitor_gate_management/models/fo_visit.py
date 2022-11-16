@@ -8,6 +8,9 @@
 
 import datetime
 from odoo import models, fields, api, _
+import logging
+
+_logger = logging.getLogger(__name__)
 
 
 class VisitDetails(models.Model):
@@ -47,8 +50,10 @@ class VisitDetails(models.Model):
         self.state = "cancel"
 
     def action_check_in(self):
-        self.state = "check_in"
-        self.check_in_date = datetime.datetime.now()
+        # self.state = "check_in"
+        # self.check_in_date = datetime.datetime.now()
+        _logger.info('Current user is: %s', self.visiting_person.user_id)
+        self.visiting_person.user_id.notify_success('hello success')
 
     def action_check_out(self):
         self.state = "check_out"

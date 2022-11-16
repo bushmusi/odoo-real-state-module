@@ -1,0 +1,14 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_fo_visit_receptionist,fo.visit,model_fo_visit,visitor_gate_management.group_receptionist,1,1,1,1
+access_fo_visitor_receptionist,fo_visitor,model_fo_visitor,visitor_gate_management.group_receptionist,1,1,1,1
+access_fo_belongings_receptionist,fo.belongings,model_fo_belongings,visitor_gate_management.group_receptionist,1,1,1,1
+access_id_proof_receptionist,id.proof,model_id_proof,visitor_gate_management.group_receptionist,1,1,1,1
+access_fo_property_counter_receptionist,fo.property.counter,model_fo_property_counter,visitor_gate_management.group_receptionist,1,1,1,1
+access_fo_purpose_receptionist,fo.purpose,model_fo_purpose,visitor_gate_management.group_receptionist,1,1,1,1
+
+
+
+
+
+
+

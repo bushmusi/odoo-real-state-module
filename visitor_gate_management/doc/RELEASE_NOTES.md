@@ -1,4 +1,4 @@
-## Module <front_office_management>
+## Module <visitor_gate_management>
 
 #### 28.10.2019
 #### Version 13.0.1.0.0

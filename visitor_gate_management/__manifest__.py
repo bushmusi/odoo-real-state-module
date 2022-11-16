@@ -21,16 +21,16 @@
 #############################################################################
 
 {
-    'name': "Front Office Management",
+    'name': "Visitor Gate Management",
     'version': '13.0.1.0.0',
-    'summary': """Manage Front Office Operations:Visitors, Devices Carrying Register, Actions""",
-    'description': """Helps You To Manage Front Office Operations, Odoo13, Odoo 13""",
-    'author': "Cybrosys Techno Solutions",
-    'maintainer': 'Cybrosys Techno Solutions',
-    'company': "Cybrosys Techno Solutions",
-    'website': "https://www.cybrosys.com",
+    'summary': """Manage Visitor Gate Operations:Visitors, Devices Carrying Register, Actions""",
+    'description': """Helps You To Manage Visitor Gate Operations, Odoo13, Odoo 13""",
+    'author': "Tria trading plc",
+    'maintainer': 'Bushra Mustofa',
+    'company': "Tria trading plc",
+    'website': "http://triaplc.com/",
     'category': 'Industries',
-    'depends': ['base', 'hr'],
+    'depends': ['base', 'hr', 'web_notify'],
     'data': [
         'views/fo_visit.xml',
         'views/fo_visitor.xml',
@@ -46,4 +46,6 @@
     'license': 'AGPL-3',
     'installable': True,
     'auto_install': False,
+    'application': True,
+    'sequence': 0,
 }
