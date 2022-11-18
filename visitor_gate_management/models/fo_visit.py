@@ -41,19 +41,37 @@ class VisitDetails(models.Model):
 
     @api.model
     def create(self, vals):
+        template = self.env.ref('auth_signup.mail_template_user_signup_account_created')
         if vals:
             vals['name'] = self.env['ir.sequence'].next_by_code('fo.visit') or _('New')
             result = super(VisitDetails, self).create(vals)
+            _logger.info('Visitor email: %s ', vals['email'])
+
+            if vals['email']:
+                email_values = {
+                    'email_cc': False,
+                    'email_to': "bush7840@yahoo.com",
+                    'subject': 'Visitor Appointment to' + str(self.visiting_person.name)
+                }
+                stat = template.send_mail(self.env.user.id, force_send=True, email_values = email_values)
+                _logger.info('Email status is: %s', stat)
             return result
+
+
 
     def action_cancel(self):
         self.state = "cancel"
 
     def action_check_in(self):
-        # self.state = "check_in"
-        # self.check_in_date = datetime.datetime.now()
-        _logger.info('Current user is: %s', self.visiting_person.user_id)
-        self.visiting_person.user_id.notify_success('hello success')
+        self.state = "check_in"
+        self.check_in_date = datetime.datetime.now()
+        _logger.info('Current visiting_person is: %s', self.visiting_person.user_id.name)
+        notify_msg_args = {
+            "message": "Your visitor is arrived to meet you", 
+            "title": str(self.visitor.name) + "checked in", 
+            "sticky": True
+        }
+        self.visiting_person.user_id.notify_success(**notify_msg_args)
 
     def action_check_out(self):
         self.state = "check_out"
