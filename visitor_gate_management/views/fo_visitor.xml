@@ -65,6 +65,8 @@
                                         <ul>
                                             <li>Name :<field name="name"/></li>
                                             <li>Phone:<field name="phone"/></li>
+                                            <li>City: <field name="city"/></li>
+                                            <li>Country: <field name="country_id"/></li>
                                         </ul>
                                     </strong>
                                 </div>
