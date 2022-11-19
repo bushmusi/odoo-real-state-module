@@ -34,6 +34,7 @@
     'data': [
         'views/fo_visit.xml',
         'views/fo_visitor.xml',
+        'views/email_templates.xml',
         'views/fo_property_counter.xml',
         'report/report.xml',
         'report/fo_property_label.xml',
