@@ -27,7 +27,7 @@ class VisitDetails(models.Model):
     visitor_belongings = fields.One2many('fo.belongings', 'belongings_id_fov_visitor', string="Personal Belongings",
                                          help='Add the belongings details here.')
     check_in_date = fields.Datetime(string="Check In Time", help='Visitor check in time automatically'
-                                                                 ' fills when he checked in to the office.')
+                                                                 ' fills when he checked in to the office.', required=True)
     check_out_date = fields.Datetime(string="Check Out Time", help='Visitor check out time automatically '
                                                                    'fills when he checked out from the office.')
     visiting_person = fields.Many2one('hr.employee',  string="Meeting With")
@@ -38,23 +38,17 @@ class VisitDetails(models.Model):
         ('check_out', 'Checked Out'),
         ('cancel', 'Cancelled'),
     ], track_visibility='onchange', default='draft')
+    company_id = fields.Many2one(
+        'res.company', string="Company",
+        default=lambda self: self.env['res.company']._company_default_get('fo.visit'))
 
     @api.model
     def create(self, vals):
-        template = self.env.ref('auth_signup.mail_template_user_signup_account_created')
+        template2 = self.env.ref('visitor_gate_management.new_guest')
         if vals:
             vals['name'] = self.env['ir.sequence'].next_by_code('fo.visit') or _('New')
             result = super(VisitDetails, self).create(vals)
-            _logger.info('Visitor email: %s ', vals['email'])
-
-            if vals['email']:
-                email_values = {
-                    'email_cc': False,
-                    'email_to': "bush7840@yahoo.com",
-                    'subject': 'Visitor Appointment to' + str(self.visiting_person.name)
-                }
-                stat = template.send_mail(self.env.user.id, force_send=True, email_values = email_values)
-                _logger.info('Email status is: %s', stat)
+            template2.send_mail(result.id, force_send=True)
             return result
 
 
@@ -65,7 +59,6 @@ class VisitDetails(models.Model):
     def action_check_in(self):
         self.state = "check_in"
         self.check_in_date = datetime.datetime.now()
-        _logger.info('Current visiting_person is: %s', self.visiting_person.user_id.name)
         notify_msg_args = {
             "message": "Your visitor is arrived to meet you", 
             "title": str(self.visitor.name) + "checked in", 
