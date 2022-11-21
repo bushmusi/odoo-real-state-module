@@ -38,13 +38,11 @@ class VisitDetails(models.Model):
         ('check_out', 'Checked Out'),
         ('cancel', 'Cancelled'),
     ], track_visibility='onchange', default='draft')
-    company_id = fields.Many2one(
-        'res.company', string="Company",
-        default=lambda self: self.env['res.company']._company_default_get('fo.visit'))
+    company_id = fields.Many2one('res.company', 'Company', default=lambda self: self.env.company, required=True)
 
     @api.model
     def create(self, vals):
-        template2 = self.env.ref('visitor_gate_management.new_guest')
+        template2 = self.env.ref('visitor_gate_management.mail_template_visitor_test')
         if vals:
             vals['name'] = self.env['ir.sequence'].next_by_code('fo.visit') or _('New')
             result = super(VisitDetails, self).create(vals)
