@@ -91,6 +91,28 @@
             </field>
         </record>
 
+        <record id="visitor_manager_groups_rule" model="ir.rule">
+            <field name="name">Manager should access their visitor only</field>
+            <field name="model_id" ref="model_fo_visit"/>
+            <field name="groups" eval="[4,(ref('visitor_gate_management.group_managers'))]"/>
+            <field name="domain_force">[('visiting_person.user_id', '=', user.id)]</field>
+        </record>
+
+        <record id="view_visits_search" model="ir.ui.view">
+            <field name="name">visit.search</field>
+            <field name="model">fo.visit</field>
+            <field name="arch" type="xml">
+                <search string="Visitor List">
+                    <separator/>
+                    <filter string="Draft or Check-in visitor" name="state" domain="[('state', 'in', ['draft','check-in'])]"/>
+                    <group expand="1" string="Group By">
+                        <filter string="Visiting Person" name="visiting_person" context="{'group_by':'visiting_person'}"/>
+                        <filter string="State of visitor" name="state" context="{'group_by':'state'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
         <record model="ir.actions.act_window" id="fo_visit_action">
             <field name="name">Visits</field>
             <field name="res_model">fo.visit</field>
