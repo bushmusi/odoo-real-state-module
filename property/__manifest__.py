@@ -11,6 +11,7 @@
     'website': 'https://www.odoo.com/page/crm',
     'depends': [
         'base',
+        'website',
     ],
     'data': [
         'security/security.xml',
@@ -21,6 +22,8 @@
         'views/estate_property_tag.xml',
         'views/users_view.xml',
         'views/estate_menus.xml',
+        'views/web_template.xml',
+        'views/web_tag_template.xml',
     ],
     'demo': [
         'demo/type_demo_data.xml',
