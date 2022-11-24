@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+        <record id="web_menu_property_tag" model="website.menu">
+            <field name="name">Property Tag</field>
+            <field name="url">/property-tag</field>
+            <field name="parent_id" ref="website.main_menu"/>
+            <field name="sequence" type="int">200</field>
+        </record>
+
+        <template id="web_property_tag_form" name="Property Tag">
+            <t t-call="website.layout">
+                <div class="clearfix container">
+                    <form role="form" action="/create-property-tag" method="POST">
+                        <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                        <div class="form-group">
+                            <label for="name" class="control-label">Name</label>
+                            <input type="text" t-att-value="name" name="name" class="form-control" required="required"/>
+                        </div>
+                        <div class="clearfix oe_login_button">
+                            <button type="submit" class="btn btn-primary pull-left">Create tag</button>
+                        </div>
+                    </form>
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <td>
+                                    Name
+                                </td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <t t-foreach="tags" t-as="tag">
+                                <tr>
+                                    <td>
+                                         <t t-esc="tag.name"/>
+                                    </td>
+                                </tr>
+                            </t>
+                        </tbody>
+                    </table>
+                </div>
+            </t>
+        </template>
+</odoo>

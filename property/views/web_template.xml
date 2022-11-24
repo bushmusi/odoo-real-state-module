@@ -1,0 +1,44 @@
+<odoo>
+    <template id="real_estate_template" name="Real Estate">
+        
+        <t t-call="website.layout">
+            <div class="container">
+                Hey subscribe to the channel!!!
+            </div>
+            <div class="container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Postcode</th>
+                            <th>state</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <t t-foreach="property" t-as="prop">
+                            <tr>
+                                <td>
+                                    
+                                    <t t-esc="prop.name" />
+                                    
+                                </td>
+                                <td>
+                                    
+                                    <t t-esc="prop.postcode" />
+                                    
+                                </td>
+                                <td>
+                                    
+                                    <t t-esc="prop.state" />
+                                    
+                                </td>
+                            </tr>
+                        </t>
+                    </tbody>
+                </table>
+                
+            </div>
+        </t>
+        
+    </template>
+</odoo>
